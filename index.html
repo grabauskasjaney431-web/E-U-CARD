@@ -104,10 +104,22 @@ ul{list-style:none}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
 .hero-right{display:flex;justify-content:center;align-items:flex-end;padding-bottom:40px}
 .hero-card-stack{position:relative;width:340px;height:280px;display:flex;align-items:flex-end;justify-content:center}
-.hero-card-vertical{position:absolute;left:-10px;bottom:20px;height:230px;width:auto;border-radius:12px;box-shadow:0 16px 48px rgba(0,0,0,0.25);transform:perspective(800px) rotateY(8deg) rotateX(2deg);transition:var(--ease);z-index:1}
+.hero-card-vertical{position:absolute;left:-55px;bottom:10px;height:200px;width:auto;border-radius:12px;box-shadow:0 16px 48px rgba(0,0,0,0.25);transform:perspective(800px) rotateY(8deg) rotateX(2deg);transition:var(--ease);z-index:1}
 .hero-card-front{z-index:2;position:relative}
 .hero-card-img{width:320px;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.3);transform:perspective(800px) rotateY(-6deg) rotateX(4deg);transition:var(--ease)}
 .hero-card-img:hover,.hero-card-front:hover .hero-card-img{transform:perspective(800px) rotateY(-4deg) rotateX(2deg) scale(1.02)}
+
+/* ===== TEAM ===== */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.team-card{background:var(--white);border-radius:var(--radius-md);padding:28px 22px;box-shadow:var(--shadow-sm);border:1px solid var(--border);text-align:center;transition:var(--ease)}
+.team-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.team-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--cobalt),var(--gold));display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:28px;margin:0 auto 14px;box-shadow:0 4px 12px rgba(0,57,166,0.15)}
+.team-card .t-name{font-size:17px;font-weight:700;margin-bottom:2px}
+.team-card .t-role{font-size:13px;color:var(--gold-dark);font-weight:600;margin-bottom:10px}
+.team-card .t-bio{font-size:13px;color:var(--text-secondary);line-height:1.6}
+.team-card .t-badge{display:inline-block;padding:2px 12px;border-radius:10px;font-size:11px;font-weight:600;margin-bottom:10px}
+.team-card .t-badge.brand{background:var(--cobalt-light);color:var(--cobalt)}
+.team-card .t-badge.market{background:#FFF3E0;color:#E65100}
 
 /* ===== TRACKER ===== */
 .savings-tracker{background:var(--white);border-bottom:1px solid var(--border);padding:48px 24px}
@@ -332,10 +344,10 @@ ul{list-style:none}
     .hero .desc{margin:0 auto 32px}
     .hero-actions{justify-content:center}
     .hero-card-img{transform:none;width:260px;margin:0 auto}
-    .hero-card-stack{width:280px;height:240px}
-    .hero-card-vertical{height:180px;left:-5px;bottom:30px;transform:perspective(800px) rotateY(6deg) rotateX(2deg)}
+    .hero-card-stack{width:260px;height:220px}
+    .hero-card-vertical{height:160px;left:-35px;bottom:20px;transform:perspective(800px) rotateY(6deg) rotateX(2deg)}
     .hero-right{padding-bottom:40px}
-    .benefits-grid,.cases-grid{grid-template-columns:repeat(2,1fr)}
+    .benefits-grid,.cases-grid,.team-grid{grid-template-columns:repeat(2,1fr)}
     .recruit-inner{grid-template-columns:1fr;gap:32px}
     .mcat-grid{grid-template-columns:repeat(2,1fr)}
 }
@@ -351,7 +363,7 @@ ul{list-style:none}
     .hero .slogan{font-size:18px}
     .tracker-grid{gap:16px}
     .tracker-item .tracker-num{font-size:28px}
-    .benefits-grid,.cases-grid{grid-template-columns:1fr}
+    .benefits-grid,.cases-grid,.team-grid{grid-template-columns:1fr}
     .pricing-grid,.mcat-grid{grid-template-columns:1fr}
     .member-stats,.admin-stats{grid-template-columns:1fr}
     .admin-search{flex-direction:column}
@@ -390,6 +402,7 @@ ul{list-style:none}
         </a>
         <div class="nav-links" id="navLinks">
             <a href="#" onclick="navigateTo('home');return false;" class="active" data-page="home" data-i18n="nav.home">首页</a>
+            <a href="#" onclick="navigateTo('team');return false;" data-page="team" data-i18n="nav.team">俄优卡团队</a>
             <a href="#" onclick="navigateTo('merchants');return false;" data-page="merchants" data-i18n="nav.merchants">商户集</a>
             <a href="#" onclick="navigateTo('login');return false;" data-page="login" data-i18n="nav.login">登录</a>
             <a href="#" onclick="navigateTo('login');return false;" class="btn-primary-nav" data-i18n="nav.apply">立即申领</a>
@@ -550,6 +563,25 @@ ul{list-style:none}
     <section id="bottomCta" style="background:linear-gradient(135deg,var(--cobalt-dark),var(--cobalt));color:var(--white);text-align:center;padding:72px 24px"></section>
 </div>
 
+<!-- ===== PAGE: TEAM ===== -->
+<div class="page" id="page-team">
+    <section class="section" style="background:var(--white)">
+        <div class="container">
+            <div style="text-align:center"><span class="section-tag" data-i18n="team.tag">TEAM</span></div>
+            <h2 class="section-title" data-i18n="team.title">俄优卡 <span class="gold">团队</span></h2>
+            <p class="section-subtitle" data-i18n="team.sub">一群热爱莫斯科的年轻人，为你打造最好的留学生活体验</p>
+            <div class="team-dept" id="teamDeptBrand">
+                <h3 class="team-dept-title" style="font-size:22px;font-weight:700;color:var(--cobalt);margin-bottom:24px;padding-bottom:8px;border-bottom:2px solid var(--gold)" data-i18n="team.brand">品牌部</h3>
+                <div class="team-grid" id="teamGridBrand"></div>
+            </div>
+            <div class="team-dept" id="teamDeptMarket" style="margin-top:48px">
+                <h3 class="team-dept-title" style="font-size:22px;font-weight:700;color:var(--cobalt);margin-bottom:24px;padding-bottom:8px;border-bottom:2px solid var(--gold)" data-i18n="team.marketing">市场部</h3>
+                <div class="team-grid" id="teamGridMarket"></div>
+            </div>
+        </div>
+    </section>
+</div>
+
 <!-- ===== PAGE: MERCHANTS ===== -->
 <div class="page" id="page-merchants">
     <div style="background:var(--white);padding:40px 24px;border-bottom:1px solid var(--border);text-align:center">
@@ -675,9 +707,9 @@ L.ru.html = { title:'Ю карта — Ю карта в руках — вся М
 L.en.html = { title:'U Card — U Card in Hand, Moscow is Yours' };
 
 // ---- Navigation ----
-L.zh.nav = { home:'首页', merchants:'商户集', login:'登录', apply:'立即申领', lang:'中文' };
-L.ru.nav = { home:'Главная', merchants:'Партнёры', login:'Войти', apply:'Оформить', lang:'Русский' };
-L.en.nav = { home:'Home', merchants:'Merchants', login:'Login', apply:'Apply Now', lang:'English' };
+L.zh.nav = { home:'首页', team:'俄优卡团队', merchants:'商户集', login:'登录', apply:'立即申领', lang:'中文' };
+L.ru.nav = { home:'Главная', team:'Команда', merchants:'Партнёры', login:'Войти', apply:'Оформить', lang:'Русский' };
+L.en.nav = { home:'Home', team:'Our Team', merchants:'Merchants', login:'Login', apply:'Apply Now', lang:'English' };
 
 // ---- Brand ----
 L.zh.brand = { name:'俄优卡', en:'U CARD', full:'俄优卡 U Card' };
@@ -688,6 +720,38 @@ L.en.brand = { name:'U Card', en:'U CARD', full:'U Card' };
 L.zh.card = { fallback:'俄优卡 U CARD' };
 L.ru.card = { fallback:'Ю карта U CARD' };
 L.en.card = { fallback:'U Card' };
+
+// ---- Team ----
+L.zh.team = { tag:'TEAM', title:'俄优卡 <span class="gold">团队</span>', sub:'一群热爱莫斯科的年轻人，为你打造最好的留学生活体验',
+    brand:'品牌部', marketing:'市场部',
+    members:[
+        {name:'陈雅文',role:'品牌总监',dept:'brand',avatar:'陈',bio:'十年品牌营销经验，前奥美策略总监，负责俄优卡整体品牌战略与视觉体系。'},
+        {name:'林子涵',role:'品牌经理',dept:'brand',avatar:'林',bio:'莫斯科大学设计系硕士，擅长品牌视觉设计与社交媒体运营。'},
+        {name:'王雨桐',role:'内容策划',dept:'brand',avatar:'王',bio:'资深内容创作者，负责公众号、小红书等平台内容策划与输出。'},
+        {name:'张明宇',role:'市场总监',dept:'market',avatar:'张',bio:'前阿里巴巴本地生活市场经理，负责俄优卡市场拓展与商户合作。'},
+        {name:'刘思琪',role:'商务经理',dept:'market',avatar:'刘',bio:'精通中俄双语，负责商户拓展与商务谈判，累计签约40+合作伙伴。'},
+        {name:'赵浩然',role:'运营主管',dept:'market',avatar:'赵',bio:'负责会员运营、数据分析与用户增长策略，驱动用户持续增长。'}
+    ]};
+L.ru.team = { tag:'КОМАНДА', title:'Команда <span class="gold">U Card</span>', sub:'Молодые энтузиасты, создающие лучший опыт для китайских студентов в Москве',
+    brand:'Отдел бренда', marketing:'Отдел маркетинга',
+    members:[
+        {name:'Чэнь Явэнь',role:'Директор бренда',dept:'brand',avatar:'陈',bio:'10 лет в бренд-маркетинге, бывший стратег Ogilvy. Отвечает за стратегию бренда U Card.'},
+        {name:'Линь Цзыхань',role:'Менеджер бренда',dept:'brand',avatar:'林',bio:'Магистр дизайна МГУ. Специализируется на визуальном дизайне и SMM.'},
+        {name:'Ван Юйтун',role:'Контент-мейкер',dept:'brand',avatar:'王',bio:'Опытный создатель контента для WeChat, Xiaohongshu и других платформ.'},
+        {name:'Чжан Минюй',role:'Директор маркетинга',dept:'market',avatar:'张',bio:'Экс-менеджер Alibaba Local Services. Отвечает за расширение рынка и партнёрства.'},
+        {name:'Лю Сыци',role:'Бизнес-менеджер',dept:'market',avatar:'刘',bio:'Владеет китайским и русским. Отвечает за привлечение партнёров, подписал 40+ контрактов.'},
+        {name:'Чжао Хаожань',role:'Руководитель отдела',dept:'market',avatar:'赵',bio:'Отвечает за операционную деятельность, анализ данных и стратегию роста.'}
+    ]};
+L.en.team = { tag:'TEAM', title:'The <span class="gold">U Card Team</span>', sub:'A group of young enthusiasts creating the best experience for Chinese students in Moscow',
+    brand:'Brand Department', marketing:'Marketing Department',
+    members:[
+        {name:'Chen Yawen',role:'Brand Director',dept:'brand',avatar:'陈',bio:'10 years in brand marketing, former Ogilvy strategist. Leads U Card brand strategy and visual identity.'},
+        {name:'Lin Zihan',role:'Brand Manager',dept:'brand',avatar:'林',bio:'Master of Design from MSU. Expert in visual design and social media operations.'},
+        {name:'Wang Yutong',role:'Content Strategist',dept:'brand',avatar:'王',bio:'Experienced content creator for WeChat, Xiaohongshu and other platforms.'},
+        {name:'Zhang Mingyu',role:'Marketing Director',dept:'market',avatar:'张',bio:'Former Alibaba Local Services marketing manager. Drives market expansion and merchant partnerships.'},
+        {name:'Liu Siqi',role:'Business Manager',dept:'market',avatar:'刘',bio:'Bilingual in Chinese and Russian. Signed 40+ merchant partnerships through strategic negotiations.'},
+        {name:'Zhao Haoran',role:'Operations Lead',dept:'market',avatar:'赵',bio:'Leads member operations, data analytics, and user growth strategies.'}
+    ]};
 
 // ---- Hero ----
 L.zh.hero = { tag:'✦ 在俄留学生专属消费权益卡', title:'俄优卡 <span class="gold">U Card</span>', slogan:'U 卡在手 · 莫城我有',
@@ -925,19 +989,19 @@ L.en.footer = { desc:'Exclusive discount card for Chinese students and expats in
 
 // ---- MERCHANT DATA (full) ----
 const MERCHANTS = [
-    { id:1,  nameCn:'丝路印象',      nameRu:'Шёлковый путь',   nameEn:'Silk Road Impression',  cat:'dining',       discount:'8.5', descZh:'经典中餐，川菜粤菜一应俱全', descRu:'Классическая китайская кухня', descEn:'Classic Chinese cuisine — Sichuan & Cantonese', logo:'../C卡/商家/丝路印象.jpg',   bg:'#D6E4F0' },
-    { id:2,  nameCn:'嘉宴',          nameRu:'Цзяянь',          nameEn:'Jiayan Restaurant',     cat:'dining',       discount:'8',   descZh:'高端中式宴请，聚会首选', descRu:'Китайский банкет премиум-класса', descEn:'Premium Chinese banquet dining', logo:'../C卡/商家/嘉宴.jpg',      bg:'#E8DBA8' },
-    { id:3,  nameCn:'竹子餐厅',      nameRu:'Бамбук',          nameEn:'Bamboo Restaurant',     cat:'dining',       discount:'8.5', descZh:'清新中式简餐，快速美味', descRu:'Лёгкая китайская кухня', descEn:'Casual Chinese dining, fast & tasty', logo:'../C卡/商家/竹子餐厅.png',      bg:'#C8E6C9' },
-    { id:4,  nameCn:'丁丁',          nameRu:'Дин Дин',         nameEn:'Ding Ding',             cat:'dining',       discount:'9',   descZh:'特色中式面点小吃', descRu:'Китайские закуски и лапша', descEn:'Specialty Chinese snack & noodle', logo:'../C卡/商家/地锅大叔.png',   bg:'#FFF3E0' },
-    { id:5,  nameCn:'地锅大叔',      nameRu:'Диго',            nameEn:'Diguo Dashu',           cat:'dining',       discount:'8.5', descZh:'地道东北铁锅炖', descRu:'Тушёное в котле по-северному', descEn:'Authentic Northeast pot stew', logo:'../C卡/商家/地锅大叔.png', bg:'#FFECB3' },
-    { id:6,  nameCn:'东北铁锅炖',    nameRu:'Северный котёл',  nameEn:'Northeast Pot',         cat:'dining',       discount:'8.5', descZh:'正宗大铁锅，一锅炖尽', descRu:'Настоящий северный котёл', descEn:'Traditional iron pot stew', logo:'../C卡/商家/地锅大叔.png', bg:'#FFE0B2' },
-    { id:7,  nameCn:'一品捞',        nameRu:'Ипинь Лао',       nameEn:'Yipin Pot',             cat:'dining',       discount:'8',   descZh:'精品小火锅，一人一锅', descRu:'Персональный хого', descEn:'Premium personal hot pot', logo:'../C卡/商家/一品捞.jpg',    bg:'#FFCDD2' },
-    { id:8,  nameCn:'TEACHA',        nameRu:'TEACHA',           nameEn:'TEACHA',                cat:'dining',       discount:'9',   descZh:'莫斯科网红奶茶', descRu:'Популярный чайный бренд', descEn:'Trendy Moscow tea brand', logo:'../C卡/商家/TEACHA.png',     bg:'#D7CCC8' },
-    { id:9,  nameCn:'美丽直通车',    nameRu:'Бьюти Экспресс',  nameEn:'Beauty Express',        cat:'service',      discount:'8',   descZh:'专业美发沙龙', descRu:'Профессиональный салон красоты', descEn:'Professional hair salon', logo:'../C卡/商家/美丽直通车.jpg', bg:'#F8BBD0' },
-    { id:10, nameCn:'功夫推拿',      nameRu:'Кунг-фу массаж',  nameEn:'Kung Fu Massage',       cat:'service',      discount:'8.5', descZh:'传统中医推拿', descRu:'Традиционный китайский массаж', descEn:'Traditional Chinese massage', logo:'../C卡/商家/功夫推拿.jpg', bg:'#BBDEFB' },
-    { id:11, nameCn:'热拉先生',      nameRu:'Мистер Гэла',     nameEn:'Mr. Gela',              cat:'service',      discount:'8.5', descZh:'时尚男士理发', descRu:'Мужская парикмахерская', descEn:'Stylish men\'s barbershop', logo:'../C卡/商家/热拉先生.jpg',     bg:'#E1BEE7' },
-    { id:12, nameCn:'全俄空运',      nameRu:'Вся Россия',      nameEn:'All-Russia Air Cargo',  cat:'logistics',    discount:'8.5', descZh:'中俄物流快递', descRu:'Грузоперевозки Китай-Россия', descEn:'China-Russia cargo & logistics', logo:'../C卡/商家/全俄空运.png',   bg:'#B3E5FC' },
-    { id:13, nameCn:'摄影工作室',    nameRu:'Фотостудия',      nameEn:'Photo Studio',          cat:'entertainment',discount:'8.5', descZh:'专业摄影摄像', descRu:'Профессиональная фотосъёмка', descEn:'Professional photography', logo:'../C卡/商家/摄影工作室.png',     bg:'#DCEDC8' }
+    { id:1,  nameCn:'丝路印象',      nameRu:'Шёлковый путь',   nameEn:'Silk Road Impression',  cat:'dining',       discount:'8.5', descZh:'经典中餐，川菜粤菜一应俱全', descRu:'Классическая китайская кухня', descEn:'Classic Chinese cuisine — Sichuan & Cantonese', logo:'C卡/商家/丝路印象.jpg',   bg:'#D6E4F0' },
+    { id:2,  nameCn:'嘉宴',          nameRu:'Цзяянь',          nameEn:'Jiayan Restaurant',     cat:'dining',       discount:'8',   descZh:'高端中式宴请，聚会首选', descRu:'Китайский банкет премиум-класса', descEn:'Premium Chinese banquet dining', logo:'C卡/商家/嘉宴.jpg',      bg:'#E8DBA8' },
+    { id:3,  nameCn:'竹子餐厅',      nameRu:'Бамбук',          nameEn:'Bamboo Restaurant',     cat:'dining',       discount:'8.5', descZh:'清新中式简餐，快速美味', descRu:'Лёгкая китайская кухня', descEn:'Casual Chinese dining, fast & tasty', logo:'C卡/商家/竹子餐厅.png',      bg:'#C8E6C9' },
+    { id:4,  nameCn:'丁丁',          nameRu:'Дин Дин',         nameEn:'Ding Ding',             cat:'dining',       discount:'9',   descZh:'特色中式面点小吃', descRu:'Китайские закуски и лапша', descEn:'Specialty Chinese snack & noodle', logo:'C卡/商家/地锅大叔.png',   bg:'#FFF3E0' },
+    { id:5,  nameCn:'地锅大叔',      nameRu:'Диго',            nameEn:'Diguo Dashu',           cat:'dining',       discount:'8.5', descZh:'地道东北铁锅炖', descRu:'Тушёное в котле по-северному', descEn:'Authentic Northeast pot stew', logo:'C卡/商家/地锅大叔.png', bg:'#FFECB3' },
+    { id:6,  nameCn:'东北铁锅炖',    nameRu:'Северный котёл',  nameEn:'Northeast Pot',         cat:'dining',       discount:'8.5', descZh:'正宗大铁锅，一锅炖尽', descRu:'Настоящий северный котёл', descEn:'Traditional iron pot stew', logo:'C卡/商家/地锅大叔.png', bg:'#FFE0B2' },
+    { id:7,  nameCn:'一品捞',        nameRu:'Ипинь Лао',       nameEn:'Yipin Pot',             cat:'dining',       discount:'8',   descZh:'精品小火锅，一人一锅', descRu:'Персональный хого', descEn:'Premium personal hot pot', logo:'C卡/商家/一品捞.jpg',    bg:'#FFCDD2' },
+    { id:8,  nameCn:'TEACHA',        nameRu:'TEACHA',           nameEn:'TEACHA',                cat:'dining',       discount:'9',   descZh:'莫斯科网红奶茶', descRu:'Популярный чайный бренд', descEn:'Trendy Moscow tea brand', logo:'C卡/商家/TEACHA.png',     bg:'#D7CCC8' },
+    { id:9,  nameCn:'美丽直通车',    nameRu:'Бьюти Экспресс',  nameEn:'Beauty Express',        cat:'service',      discount:'8',   descZh:'专业美发沙龙', descRu:'Профессиональный салон красоты', descEn:'Professional hair salon', logo:'C卡/商家/美丽直通车.jpg', bg:'#F8BBD0' },
+    { id:10, nameCn:'功夫推拿',      nameRu:'Кунг-фу массаж',  nameEn:'Kung Fu Massage',       cat:'service',      discount:'8.5', descZh:'传统中医推拿', descRu:'Традиционный китайский массаж', descEn:'Traditional Chinese massage', logo:'C卡/商家/功夫推拿.jpg', bg:'#BBDEFB' },
+    { id:11, nameCn:'热拉先生',      nameRu:'Мистер Гэла',     nameEn:'Mr. Gela',              cat:'service',      discount:'8.5', descZh:'时尚男士理发', descRu:'Мужская парикмахерская', descEn:'Stylish men\'s barbershop', logo:'C卡/商家/热拉先生.jpg',     bg:'#E1BEE7' },
+    { id:12, nameCn:'全俄空运',      nameRu:'Вся Россия',      nameEn:'All-Russia Air Cargo',  cat:'logistics',    discount:'8.5', descZh:'中俄物流快递', descRu:'Грузоперевозки Китай-Россия', descEn:'China-Russia cargo & logistics', logo:'C卡/商家/全俄空运.png',   bg:'#B3E5FC' },
+    { id:13, nameCn:'摄影工作室',    nameRu:'Фотостудия',      nameEn:'Photo Studio',          cat:'entertainment',discount:'8.5', descZh:'专业摄影摄像', descRu:'Профессиональная фотосъёмка', descEn:'Professional photography', logo:'C卡/商家/摄影工作室.png',     bg:'#DCEDC8' }
 ];
 
 // ---- OTHER DATA ----
@@ -1017,6 +1081,7 @@ function setLanguage(lang) {
     renderCta();
     renderMapLegend();
     renderMerchantsFull();
+    renderTeam();
     updatePageTitle();
     renderAdminStatic();
     if (currentUser?.role==='member') renderMemberDashboard();
@@ -1047,6 +1112,7 @@ function navigateTo(page) {
     document.querySelectorAll('.nav-links a[data-page]').forEach(a=>a.classList.toggle('active',a.dataset.page===page));
     document.getElementById('navLinks').classList.remove('open');
     if(page==='merchants') renderMerchantsFull();
+    if(page==='team') renderTeam();
     if(page==='member' && currentUser?.role==='member') renderMemberDashboard();
     if(page==='admin' && currentUser?.role==='admin') renderAdminDashboard();
     if(page==='login' && currentUser) {
@@ -1217,6 +1283,25 @@ function renderMerchantsFull() {
 function filterMCatAllPage(cat) {
     if(cat){mcatAllCat=cat;document.querySelectorAll('#mcatFiltersAll .mcat-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat||b.textContent.includes(cat)))}
     renderMerchantsFull()
+}
+
+/* =============================================================
+   TEAM
+   ============================================================= */
+function renderTeam() {
+    const d=L[currentLang].team;
+    const brandGrid=document.getElementById('teamGridBrand');
+    const marketGrid=document.getElementById('teamGridMarket');
+    if (brandGrid) {
+        brandGrid.innerHTML=d.members.filter(m=>m.dept==='brand').map(m=>`
+            <div class="team-card"><div class="team-avatar">${m.avatar}</div><span class="t-badge brand">${d.brand}</span><div class="t-name">${m.name}</div><div class="t-role">${m.role}</div><div class="t-bio">${m.bio}</div></div>
+        `).join('');
+    }
+    if (marketGrid) {
+        marketGrid.innerHTML=d.members.filter(m=>m.dept==='market').map(m=>`
+            <div class="team-card"><div class="team-avatar">${m.avatar}</div><span class="t-badge market">${d.marketing}</span><div class="t-name">${m.name}</div><div class="t-role">${m.role}</div><div class="t-bio">${m.bio}</div></div>
+        `).join('');
+    }
 }
 
 /* =============================================================
